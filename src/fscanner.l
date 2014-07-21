@@ -793,6 +793,12 @@ if{wsnl}*\(	{ 	/* ignore 'if' */
 	
 ^{ws}+		{		/* don't save leading white space */
 		}
+^{ws}*import{ws}+(static)?{ws}*[^ \t\r\n]+{ws}*[;]	{ /* import java file */
+                }
+^{ws}*package{ws}+[^ \t\r\n]+{ws}*[;]	{ /* package x.xx.xx */
+                }
+("private"|"public"|"protected"|"static"|"final"|"native")	{
+                }
 		
 {ws}+\n 	{		/* eat whitespace at end of line */
 			unput('\n');
